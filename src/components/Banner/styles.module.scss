@@ -1,0 +1,90 @@
+@use '@styles/mixins.module.scss' as *;
+@use '@styles/variables.module.scss' as *;
+
+.container {
+    @include flex_box_custom(center, center, 0px);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-image: url(https://i.pinimg.com/1200x/bc/06/b1/bc06b1679a7d8c368111402283d52cac.jpg);
+    width: 100%;
+    height: calc(100vh - 83px);
+    height: calc(100svh - 83px);
+    min-height: 360px;
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+}
+
+.container::before {
+    position: absolute;
+    z-index: -1;
+    background: linear-gradient(
+        90deg,
+        rgb(25 17 10 / 35%),
+        rgb(25 17 10 / 18%) 50%,
+        rgb(25 17 10 / 30%)
+    );
+    content: '';
+    inset: 0;
+}
+
+.content {
+    @include flex_box_custom(center, center, 0px);
+    flex-direction: column;
+    max-width: min(90%, 760px);
+    padding: 24px;
+    text-align: center;
+    color: #fffaf0;
+    text-shadow: 0 2px 14px rgb(0 0 0 / 65%);
+    background-position: center;
+}
+
+.content h1 {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(48px, 8vw, 112px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: clamp(1px, 0.5vw, 6px);
+}
+
+.content p {
+    margin: 12px 0 20px;
+    color: #fffaf0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(12px, 1.6vw, 20px);
+    font-weight: 800;
+    letter-spacing: clamp(1px, 0.3vw, 4px);
+    line-height: 1.15;
+}
+
+.content button {
+    width: clamp(120px, 14vw, 170px);
+    height: clamp(38px, 4vw, 48px);
+    border: 0;
+    border-radius: 2px;
+    background-color: #a86c35;
+    color: #fffaf0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(11px, 1vw, 14px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: none;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.content button:hover {
+    background-color: #875328;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 16px;
+    }
+
+    .content p {
+        margin: 8px 0 16px;
+    }
+}

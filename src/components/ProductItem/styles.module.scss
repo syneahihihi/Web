@@ -1,0 +1,126 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/mixins.module.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  @include flex_box_custom(space-between, center, 10px);
+}
+
+.boxImg {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 285 / 340;
+  background-color: #f5f2e9;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.imgMain {
+  transition: transform 600ms ease;
+}
+
+.imgSecond {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 500ms ease, transform 600ms ease;
+}
+
+.boxImg:hover .imgMain,
+.boxImg:hover .imgSecond {
+  transform: scale(1.04);
+}
+
+.boxImg:hover .imgSecond,
+.boxImg:focus-within .imgSecond {
+  opacity: 1;
+}
+
+.boxActions {
+  @include flex_box_custom(center, center, 8px);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.boxImg:hover .boxActions,
+.boxImg:focus-within .boxActions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.actionBtn {
+  @include radius_common(50%);
+  @include flex_box_custom(center, center, 0px);
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background-color: $white_color;
+  transition: background-color 200ms ease;
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    transition: filter 200ms ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background-color: $primary_color;
+
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+.info {
+  @include flex_box_custom(center, flex-start, 4px);
+  flex-direction: column;
+  padding: 10px 0 0;
+  text-align: left;
+}
+
+.nameProduct {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: $primary_color;
+}
+
+.priceProduct {
+  margin: 0;
+  font-size: 12px;
+  color: $secondary_color;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .imgMain,
+  .imgSecond,
+  .boxActions {
+    transition: none;
+    transform: none !important;
+  }
+}
+
+// Thiết bị cảm ứng không có hover: luôn hiện nút thao tác
+@media (hover: none) {
+  .boxActions {
+    opacity: 1;
+    transform: none;
+  }
+}

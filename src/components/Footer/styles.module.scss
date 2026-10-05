@@ -1,0 +1,60 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/mixins.module.scss' as *;
+
+.footer {
+  background-color: #1a1a1a;
+  color: $white_color;
+  padding: 60px 0 30px;
+  margin-top: 60px;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+  }
+
+  .col {
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      color: $white_color;
+    }
+
+    p, li {
+      font-size: 14px;
+      color: #aaa;
+      line-height: 1.8;
+      list-style: none;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: $white_color;
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 13px;
+    color: #777;
+  }
+}

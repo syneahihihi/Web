@@ -1,0 +1,25 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/mixins.module.scss' as *;
+
+.timerContainer {
+  @include flex_box_custom(center, center, 8px);
+  flex-wrap: wrap;
+
+  .box {
+    @include flex_box_custom(center, baseline, 6px);
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 6px 10px;
+    border-radius: 2px;
+
+    .number {
+      font-size: 14px;
+      font-weight: 500;
+      color: $primary_color;
+    }
+
+    .label {
+      font-size: 12px;
+      color: $secondary_color;
+    }
+  }
+}
